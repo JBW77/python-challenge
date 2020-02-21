@@ -2,77 +2,57 @@ import os
 import csv
 
 # Path to  folder
-new_file = os.path.join("Downloads", "budget_data.csv")
+new_file = os.path.join("Downloads", "election_data.csv")
 
 # Open the CSV
 with open(new_file) as csvfile:
     csvreader = csv.reader(csvfile, delimiter=",")
 
     csv_header = next(csvfile)
-    
-    print("Financial Analysis")
-    print("----------------------")
 
+    print("Election Results")
+    print("------------------")
 
-#get total months
+    #get total months
     count = 0
     for row in csvreader:
         count += 1
         #total = int(row[1])
-    print(f'Total Months: {count}')
-   
+    print(f'Total Votes: {count}')
 
-def total(numbers):
     
-    sum = 0
-    for number in numbers:
-        sum += number
-    return sum
+    
+    #working on the rest
+    #candidates = ["Khan", "Correy", "Li", "O'tooly"]
+    #khan = 0
+    #Correy = 0
+    #Li = 0
+    #Otool = 0
 
+    #for vote in csvreader[2]:
+     #   if vote = "Khan":
+    #      khan += 1
+       # if vote = "Correy":
+        #    Correy +=1
+        #if vote = "Li":
+         #   Li +=1
+        #if vote = "O'Tooley"
+         #   Otool + =1
+    
+    percent_Khan = len(khan)/count
+    percent_Correy =  len(Correy)/count
+    percent_Li = len(Li)/count
+    percent_Otool = len(Otool)/count
 
-total = total([1,5,7])  # will be used to sum new profit changes list
-print(f'Total: {total}')
-
-
-# create empty list for monthly change
-
-change = []
-
-for row in csvreader:
-    monthly_change = row[1] - row
-    change.append(row)
-avg = sum(change)/len(change)
-
-print(f'Average Change: {avg}')
-
-# greatest increase and decrease
-
-for m in change:
-    max = max(m)
-    print(f'Greatest Increase in Profits: {max}')
-
-for s in change:
-    min = min(s)
-    print(f'Greatest Decrease in Profits: {min}')
+    Print(f'Khan: {percent_Khan}, len(khan)')
+    Print(f'Correy: {percent_Correy}, len(Corey)')
+    Print(f'Li: {percent_Li}, len(Li)')
+    Print(f"O'Tooley: {percent_Otool}, len(Otool)")
 
 
 
 
-
-
-
-
-
- 
-
-
-
-
-
-
-
-
-
+    
 
 
 
