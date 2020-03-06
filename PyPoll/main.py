@@ -2,57 +2,60 @@ import os
 import csv
 
 # Path to  folder
-new_file = os.path.join("Downloads", "election_data.csv")
+csvpath = os.path.join("Downloads", "election_data.csv")
 
 # Open the CSV
-with open(new_file) as csvfile:
-    csvreader = csv.reader(csvfile, delimiter=",")
+with open(csvpath,newline ='') as csvfile:
+    csvreader = csv.reader(csvfile, delimiter=',')
 
-    csv_header = next(csvfile)
+    csv_header = next(csvreader)
 
     print("Election Results")
     print("------------------")
 
-    #get total months
-    count = 0
+    #get totals
+    total_votes = 0
+    khan = 0
+    correy = 0
+    li = 0
+    otool = 0
+    
     for row in csvreader:
-        count += 1
-        #total = int(row[1])
-    print(f'Total Votes: {count}')
-
     
+        if row[2] == "Khan":
+            khan += 1
+        if row[2] == "Correy":
+            correy += 1
+        if row[2] == "Li":
+            li += 1
+        if row[2] == "O'Tooley":
+            otool += 1
+
+        total_votes +=1
+
+    khan_pct = (khan/total_votes)*100
+    correy_pct = (correy/total_votes)*100
+    li_pct = (li/total_votes)*100
+    otool_pct = (otool/total_votes)*100
+
+    winner = max(khan,correy,li,otool)
     
-    #working on the rest
-    #candidates = ["Khan", "Correy", "Li", "O'tooly"]
-    #khan = 0
-    #Correy = 0
-    #Li = 0
-    #Otool = 0
+    print(f'Total Votes: {total_votes}')
+    print("------------------")
+    print(f'Total Votes Khan: {khan_pct:.3f}% {khan}')
+    print(f'Total Votes Correy: {correy_pct:.3f}% {correy}')
+    print(f'Total Votes Li: {li_pct:.3f}% {li}')
+    print(f"Total Votes O'Toole: {otool_pct:.3f}% {otool}")
+    print("------------------")
+  
+    if winner == khan:
+        print("Winner: Khan")
+    if winner == correy:
+        print("Winner: Correy")
+    if winner == li:
+        print("Winner: Li")
+    if winner == otool:
+        print("Winner: O'Toole")
+        print("------------------")
 
-    #for vote in csvreader[2]:
-     #   if vote = "Khan":
-    #      khan += 1
-       # if vote = "Correy":
-        #    Correy +=1
-        #if vote = "Li":
-         #   Li +=1
-        #if vote = "O'Tooley"
-         #   Otool + =1
-    
-    percent_Khan = len(khan)/count
-    percent_Correy =  len(Correy)/count
-    percent_Li = len(Li)/count
-    percent_Otool = len(Otool)/count
-
-    Print(f'Khan: {percent_Khan}, len(khan)')
-    Print(f'Correy: {percent_Correy}, len(Corey)')
-    Print(f'Li: {percent_Li}, len(Li)')
-    Print(f"O'Tooley: {percent_Otool}, len(Otool)")
-
-
-
-
-    
-
-
-
+    print("------------------")
